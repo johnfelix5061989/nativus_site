@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nativus On Road | Institucional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --black: #0F0705;
+            --red: #975D63;
+            --red-bright: #c1757c;
+            --tan: #C7A988;
+            --brown: #47352D;
+            --silver: #A9AAAD;
+            --glass: rgba(255, 255, 255, 0.03);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Suaviza a rolagem para cliques em links internos */
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--black);
+            color: var(--tan);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* HEADER & NAV */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 7, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(199, 169, 136, 0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--red); }
+        .logo span { color: var(--silver); }
+        
+        nav a {
+            color: var(--silver);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        nav a:hover { color: var(--red); }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            /* Imagem otimizada para cobrir a tela e centralizar o objeto principal (a moto) */
+            background: 
+                linear-gradient(to bottom, rgba(15,7,5,0.3), var(--black)),
+                url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=2070') center center / cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, var(--tan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            color: var(--silver);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        .pillars {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pillars span {
+            padding: 10px 25px;
+            border: 1px solid var(--red);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: var(--transition);
+            background: rgba(151, 93, 99, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .pillars span:hover {
+            background: var(--red);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            border-left: 4px solid var(--red);
+            padding-left: 20px;
+        }
+
+        section h2 { font-size: 2.8rem; margin-bottom: 10px; }
+
+        /* GRID & CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 50px 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(199, 169, 136, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card:hover {
+            background: rgba(151, 93, 99, 0.08);
+            border-color: var(--red);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .card h3 { font-size: 1.6rem; color: #fff; }
+        .card p { color: var(--silver); font-size: 1rem; }
+
+        /* BUTTONS */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+            padding: 16px 32px;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .button:hover {
+            background: var(--red-bright);
+            padding-left: 45px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            background: #080403;
+            border-top: 1px solid rgba(199, 169, 136, 0.1);
+        }
+
+        .social-links { margin-bottom: 30px; font-size: 1.5rem; }
+        .social-links a { color: var(--silver); margin: 0 15px; transition: var(--transition); }
+        .social-links a:hover { color: var(--red); transform: scale(1.2); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero h1 { font-size: 3.8rem; }
+            section { padding: 80px 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NATIVUS <span>ON ROAD</span></div>
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#regionais">Regionais</a>
+        <a href="#documentos">Documentos</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>NATIVUS ON ROAD</h1>
+        <p>IRMANDADE • ESTRADA • RESPEITO • DISCIPLINA</p>
+        <div class="pillars">
+            <span>IDENTIDADE</span>
+            <span>ORGANIZAÇÃO</span>
+            <span>PRESENÇA</span>
+            <span>RESPONSABILIDADE</span>
+        </div>
+    </div>
+</div>
+
+<section id="sobre">
+    <div class="section-header">
+        <h2>Quem Somos</h2>
+        <p style="color: var(--silver)">Honra e asfalto correndo nas veias.</p>
+    </div>
+    <p style="font-size: 1.25rem; max-width: 850px; color: var(--silver); line-height: 1.8;">
+        O <strong style="color: var(--tan)">Nativus On Road</strong> é um motogrupo estruturado, independente e disciplinado. 
+        Nossa atuação é pautada pelo respeito rigoroso à cultura motociclística, 
+        organização administrativa sólida e presença ativa nos estados onde estamos estabelecidos.
+    </p>
+</section>
+
+<section id="regionais" style="background: linear-gradient(to bottom, transparent, rgba(151,93,99,0.02), transparent)">
+    <div class="section-header">
+        <h2>Regionais</h2>
+        <p style="color: var(--silver)">Nossa bandeira em solo nordestino.</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Pernambuco (PE)</h3>
+            <p>Chapter fundador e referência estrutural do grupo. O marco zero da nossa história.</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h3>Alagoas (AL)</h3>
+            <p>Regional em crescimento exponencial, focada na integração e força local.</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-route"></i>
+            <h3>Bahia (BA)</h3>
+            <p>Presença estratégica e expansão contínua no coração do Nordeste brasileiro.</p>
+        </div>
+    </div>
+</section>
+
+<section id="documentos">
+    <div class="section-header">
+        <h2>Documentos Oficiais</h2>
+        <p style="color: var(--silver)">Diretrizes que regem nossa irmandade.</p>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <i class="fa-solid fa-file-shield"></i>
+            <h3>Estatuto</h3>
+            <p>A base da nossa organização: direitos, deveres e funcionamento institucional.</p>
+            <a class="button" href="estatuto.pdf" target="_blank">Acessar PDF <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-handcuffs"></i>
+            <h3>Código de Disciplina</h3>
+            <p>As leis da estrada: conduta ética, respeito mútuo e normas disciplinares.</p>
+            <a class="button" href="codigo-disciplina.pdf" target="_blank">Acessar PDF <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="social-links">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <p>&copy; 2024 NATIVUS ON ROAD • Documento Institucional</p>
+    <p style="margin-top: 15px; font-size: 0.75rem; color: var(--brown); letter-spacing: 1px;">VIDA LONGA À ESTRADA</p>
+</footer>
+
+<script>
+    // Impede o navegador de restaurar a posição de rolagem antiga
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+
+    // Força o scroll para o topo assim que a janela carregar
+    window.scrollTo(0, 0);
+
+    // Garantia adicional para o evento de load
+    window.onload = function() {
+        setTimeout(function() {
+            window.scrollTo(0, 0);
+        }, 10);
+    };
+</script>
+
+</body>
+</html>
