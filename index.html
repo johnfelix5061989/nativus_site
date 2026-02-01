@@ -10,10 +10,10 @@
 
     <style>
         :root {
-            /* Cores Oficiais (Estatuto Art. CORES OFICIAIS) */
+            /* Cores Oficiais Extraídas do Estatuto */
             --black: #0F0705;       /* Preto Oficial */
             --red: #975D63;         /* Vermelho Escuro */
-            --red-bright: #c1757c;  /* Variação para hover */
+            --red-bright: #c1757c;  
             --tan: #C7A988;         /* Bege Areia */
             --brown: #47352D;       /* Marrom Escuro */
             --leather: #907159;     /* Marrom Couro */
@@ -34,7 +34,7 @@
 
         h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* HEADER & NAV - MOBILE FRIENDLY */
+        /* HEADER & NAV */
         header {
             position: fixed;
             top: 0;
@@ -92,29 +92,9 @@
             letter-spacing: 3px;
         }
 
-        .pillars { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .pillars span {
-            padding: 8px 18px;
-            border: 1px solid var(--red);
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: bold;
-            background: rgba(151, 93, 99, 0.1);
-        }
-
         /* SECTIONS */
-        section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-header {
-            margin-bottom: 35px;
-            border-left: 4px solid var(--red);
-            padding-left: 15px;
-        }
-
+        section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+        .section-header { margin-bottom: 35px; border-left: 4px solid var(--red); padding-left: 15px; }
         section h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-bottom: 8px; }
 
         .grid {
@@ -172,7 +152,6 @@
             cursor: pointer;
             z-index: 2000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .music-playing { animation: pulse-red 2s infinite; }
@@ -183,20 +162,12 @@
             100% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0); }
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         footer {
             padding: 50px 20px;
             text-align: center;
             background: #080403;
             border-top: 1px solid rgba(199, 169, 136, 0.1);
         }
-
-        .social-links { margin-bottom: 20px; font-size: 1.2rem; }
-        .social-links a { color: var(--silver); margin: 0 10px; }
 
         @media (max-width: 600px) {
             header { flex-direction: column; gap: 8px; padding: 12px; }
@@ -246,16 +217,19 @@
             <i class="fa-solid fa-location-dot"></i>
             <h3>Pernambuco (PE)</h3>
             <p>Chapter fundador com sede em Olinda/PE. Referência administrativa e histórica do grupo.</p>
+            <a href="regionais/pernambuco.html" class="button">Ver Regional</a>
         </div>
         <div class="card">
             <i class="fa-solid fa-map-location-dot"></i>
             <h3>Alagoas (AL)</h3>
             <p>Regional estratégica em forte expansão e com presença massiva nos eventos.</p>
+            <a href="regionais/alagoas.html" class="button">Ver Regional</a>
         </div>
         <div class="card">
             <i class="fa-solid fa-route"></i>
             <h3>Bahia (BA)</h3>
             <p>Regional em expansão, responsável pela manutenção da disciplina.</p>
+            <a href="regionais/bahia.html" class="button">Ver Regional</a>
         </div>
     </div>
 </section>
@@ -282,10 +256,10 @@
 </section>
 
 <footer>
-    <div class="social-links">
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    <div class="social-links" style="margin-bottom: 20px; font-size: 1.2rem;">
+        <a href="#" style="color: var(--silver); margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" style="color: var(--silver); margin: 0 10px;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" style="color: var(--silver); margin: 0 10px;"><i class="fa-brands fa-youtube"></i></a>
     </div>
     <p>&copy; 2026 NATIVUS ON ROAD • Administração Nacional</p>
     <p style="margin-top: 15px; font-size: 0.65rem; opacity: 0.5;">
@@ -303,7 +277,7 @@
 
 <script>
     const audio = document.getElementById('bg-music');
-    audio.volume = 0.7; // Reduzido para 70% conforme solicitado (Volume em celular)
+    audio.volume = 0.7; // Volume a 70%
 
     if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
