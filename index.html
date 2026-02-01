@@ -26,7 +26,6 @@
             padding: 0;
         }
 
-        /* Suaviza a rolagem para cliques em links internos */
         html { scroll-behavior: smooth; }
 
         body {
@@ -72,7 +71,6 @@
         /* HERO SECTION */
         .hero {
             min-height: 100vh;
-            /* Imagem otimizada para cobrir a tela e centralizar o objeto principal (a moto) */
             background: 
                 linear-gradient(to bottom, rgba(15,7,5,0.3), var(--black)),
                 url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=2070') center center / cover no-repeat;
@@ -95,7 +93,6 @@
             background: linear-gradient(to bottom, #fff, var(--tan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hero p {
@@ -103,7 +100,6 @@
             font-size: 1.1rem;
             margin-bottom: 40px;
             letter-spacing: 4px;
-            font-weight: 300;
         }
 
         .pillars {
@@ -170,12 +166,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .card i {
-            font-size: 2.5rem;
-            color: var(--red);
-            margin-bottom: 10px;
-        }
-
+        .card i { font-size: 2.5rem; color: var(--red); margin-bottom: 10px; }
         .card h3 { font-size: 1.6rem; color: #fff; }
         .card p { color: var(--silver); font-size: 1rem; }
 
@@ -196,9 +187,34 @@
             clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
         }
 
-        .button:hover {
-            background: var(--red-bright);
-            padding-left: 45px;
+        .button:hover { background: var(--red-bright); padding-left: 45px; }
+
+        /* MUSIC CONTROL */
+        #music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .music-playing { animation: pulse-red 2s infinite; }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(151, 93, 99, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0); }
         }
 
         /* ANIMATIONS */
@@ -219,12 +235,10 @@
         .social-links a { color: var(--silver); margin: 0 15px; transition: var(--transition); }
         .social-links a:hover { color: var(--red); transform: scale(1.2); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header { padding: 20px; }
             nav { display: none; }
             .hero h1 { font-size: 3.8rem; }
-            section { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -258,14 +272,14 @@
         <h2>Quem Somos</h2>
         <p style="color: var(--silver)">Honra e asfalto correndo nas veias.</p>
     </div>
-    <p style="font-size: 1.25rem; max-width: 850px; color: var(--silver); line-height: 1.8;">
+    <p style="font-size: 1.25rem; max-width: 850px; color: var(--silver);">
         O <strong style="color: var(--tan)">Nativus On Road</strong> é um motogrupo estruturado, independente e disciplinado. 
         Nossa atuação é pautada pelo respeito rigoroso à cultura motociclística, 
         organização administrativa sólida e presença ativa nos estados onde estamos estabelecidos.
     </p>
 </section>
 
-<section id="regionais" style="background: linear-gradient(to bottom, transparent, rgba(151,93,99,0.02), transparent)">
+<section id="regionais" style="background: rgba(255,255,255,0.01)">
     <div class="section-header">
         <h2>Regionais</h2>
         <p style="color: var(--silver)">Nossa bandeira em solo nordestino.</p>
@@ -276,13 +290,11 @@
             <h3>Pernambuco (PE)</h3>
             <p>Chapter fundador e referência estrutural do grupo. O marco zero da nossa história.</p>
         </div>
-
         <div class="card">
             <i class="fa-solid fa-map-location-dot"></i>
             <h3>Alagoas (AL)</h3>
             <p>Regional em crescimento exponencial, focada na integração e força local.</p>
         </div>
-
         <div class="card">
             <i class="fa-solid fa-route"></i>
             <h3>Bahia (BA)</h3>
@@ -303,7 +315,6 @@
             <p>A base da nossa organização: direitos, deveres e funcionamento institucional.</p>
             <a class="button" href="estatuto.pdf" target="_blank">Acessar PDF <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
         <div class="card">
             <i class="fa-solid fa-handcuffs"></i>
             <h3>Código de Disciplina</h3>
@@ -320,24 +331,49 @@
         <a href="#"><i class="fa-brands fa-youtube"></i></a>
     </div>
     <p>&copy; 2024 NATIVUS ON ROAD • Documento Institucional</p>
+    
+    <p style="margin-top: 25px; font-size: 0.7rem; opacity: 0.5; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+        Music track: Metal Is Trash by Pufino | Source: <a href="https://freetouse.com/music" target="_blank" style="color: inherit;">https://freetouse.com/music</a> | No Copyright Music for Video (Free)
+    </p>
+    
     <p style="margin-top: 15px; font-size: 0.75rem; color: var(--brown); letter-spacing: 1px;">VIDA LONGA À ESTRADA</p>
 </footer>
 
+<audio id="bg-music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-control" onclick="toggleMusic()">
+    <i id="music-icon" class="fa-solid fa-volume-xmark"></i>
+</div>
+
 <script>
-    // Impede o navegador de restaurar a posição de rolagem antiga
+    // 1. Forçar a página para o topo no carregamento
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     }
-
-    // Força o scroll para o topo assim que a janela carregar
     window.scrollTo(0, 0);
 
-    // Garantia adicional para o evento de load
     window.onload = function() {
-        setTimeout(function() {
-            window.scrollTo(0, 0);
-        }, 10);
+        setTimeout(function() { window.scrollTo(0, 0); }, 10);
     };
+
+    // 2. Controle da Música
+    function toggleMusic() {
+        const audio = document.getElementById('bg-music');
+        const icon = document.getElementById('music-icon');
+        const btn = document.getElementById('music-control');
+
+        if (audio.paused) {
+            audio.play().catch(e => console.log("Autoplay bloqueado pelo navegador."));
+            icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+            btn.classList.add('music-playing');
+        } else {
+            audio.pause();
+            icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+            btn.classList.remove('music-playing');
+        }
+    }
 </script>
 
 </body>
