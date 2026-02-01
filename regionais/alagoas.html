@@ -2,34 +2,92 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Nativus On Road | Alagoas</title>
+    <title>Nativus On Road | Alagoas 2026</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --black: #0F0705; --red: #975D63; --tan: #C7A988; --silver: #A9AAAD; }
+        :root {
+            --black: #0F0705; --red: #975D63; --tan: #C7A988; --silver: #A9AAAD;
+            --brown: #47352D; --glass: rgba(255, 255, 255, 0.03);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--black); color: var(--tan); line-height: 1.6; }
-        h1, h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-        header { padding: 20px 5%; background: rgba(15, 7, 5, 0.95); border-bottom: 1px solid rgba(199, 169, 136, 0.1); display: flex; justify-content: space-between; align-items: center; }
-        .back-link { color: var(--silver); text-decoration: none; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-        .info-card { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 8px; border-left: 4px solid var(--red); }
-        .info-card h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
-        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: var(--silver); opacity: 0.5; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--black); color: var(--tan); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        header { padding: 15px 5%; background: rgba(15, 7, 5, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(199, 169, 136, 0.1); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .back-link { color: var(--silver); text-decoration: none; font-weight: bold; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; }
+        section { padding: 40px 5%; max-width: 1200px; margin: auto; }
+        .release-box { margin-bottom: 60px; }
+        .release-box h1 { font-size: clamp(1.8rem, 8vw, 3.2rem); color: #fff; margin-bottom: 20px; border-left: 5px solid var(--red); padding-left: 20px; }
+        .release-box p { color: var(--silver); font-size: 1.1rem; max-width: 850px; margin-bottom: 15px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 80px; }
+        .gallery-item { background: var(--glass); border: 1px solid rgba(199, 169, 136, 0.1); border-radius: 4px; padding: 10px; transition: var(--transition); }
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--red); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; border-radius: 2px; display: block; }
+        .gallery-item figcaption { margin-top: 12px; font-size: 0.8rem; color: var(--tan); text-align: center; font-weight: 700; text-transform: uppercase; border-top: 1px solid rgba(151, 93, 99, 0.2); padding-top: 8px; }
+        .organogram { text-align: center; padding: 40px 20px; background: var(--glass); border-radius: 8px; border: 1px solid rgba(199, 169, 136, 0.05); }
+        .org-container { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .org-node { background: var(--brown); border: 1px solid var(--red); padding: 20px; min-width: 240px; position: relative; }
+        .org-node::after { content: ""; position: absolute; bottom: -30px; left: 50%; width: 2px; height: 30px; background: var(--red); }
+        .org-node.last::after { display: none; }
+        .org-node h4 { color: #fff; font-size: 0.95rem; margin-bottom: 5px; }
+        .org-node span { font-size: 0.8rem; color: var(--silver); }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(199, 169, 136, 0.1); font-size: 0.75rem; color: var(--silver); opacity: 0.6; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
-        <div style="color: var(--red); font-family: 'Oswald';">NATIVUS AL</div>
-    </header>
-    <div class="container">
-        <div class="info-card">
-            <h1>Alagoas</h1>
-            <p>Regional estratégica em forte expansão, mantendo a presença massiva do grupo em eventos e atividades locais, sempre sob a bandeira da disciplina[cite: 13, 21].</p>
+<header>
+    <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> VOLTAR PARA HOME</a>
+    <div style="color: var(--red); font-family: 'Oswald'; font-size: 1.2rem;">NATIVUS <span style="color: var(--silver)">AL</span></div>
+</header>
+<section>
+    <div class="release-box">
+        <h1>Regional Alagoas</h1>
+        <p>A Regional Alagoas consolidou-se como um ponto estratégico de expansão do Nativus On Road. Pautada pelo respeito à hierarquia nacional, nossa regional destaca-se pela forte integração em eventos motociclísticos e pela lealdade absoluta aos princípios do grupo.</p>
+        <p>Nosso objetivo é fortalecer o vínculo entre os membros locais, garantindo que a identidade visual e os costumes da estrada sejam preservados com disciplina.</p>
+    </div>
+    <div class="gallery">
+        <figure class="gallery-item">
+            <img src="C:\Users\jdoug\OneDrive\Área de Trabalho\NATIVUS_TI\site\imagens\dias.png
+            " alt="Diretor">
+            <figcaption>Diretor Regional AL
+                <br>
+                P. Dias
+            </figcaption>
+        </figure>
+        <figure class="gallery-item">
+            <img src="../imagens/alagoas_2.jpg" alt="Irmandade AL">
+            <figcaption>União e Apoio Mútuo - Regional AL</figcaption>
+        </figure>
+        <figure class="gallery-item">
+            <img src="../imagens/alagoas_3.jpg" alt="Estrada AL">
+            <figcaption>Comboio disciplinado nas estradas alagoanas</figcaption>
+        </figure>
+    </div>
+    <div style="margin-bottom: 40px; border-left: 4px solid var(--red); padding-left: 15px;">
+        <h2>Estrutura Regional Alagoas</h2>
+        <p style="color: var(--silver)">Hierarquia Estadual Conforme Estatuto</p>
+    </div>
+    <div class="organogram">
+        <div class="org-container">
+            <div class="org-node">
+                <h4>DIRETORIA ESTADUAL (AL)</h4>
+                <span>Gestão e Representação Administrativa</span>
+            </div>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <div class="org-node">
+                    <h4>ROAD CAPTAIN (AL)</h4>
+                    <span>Segurança e Logística de Comboio</span>
+                </div>
+                <div class="org-node last">
+                    <h4>SECRETÁRIO REGIONAL (AL)</h4>
+                    <span>Registros e Documentação Local</span>
+                </div>
+            </div>
         </div>
     </div>
-    <footer>&copy; 2026 NATIVUS ON ROAD • Regional Alagoas</footer>
+</section>
+<footer>&copy; 2026 NATIVUS ON ROAD • REGIONAL ALAGOAS</footer>
 </body>
 </html>

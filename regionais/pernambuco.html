@@ -2,38 +2,210 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Nativus On Road | Pernambuco</title>
+    <title>Nativus On Road | Pernambuco (Sede) 2026</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --black: #0F0705; --red: #975D63; --tan: #C7A988; --silver: #A9AAAD;
+            --black: #0F0705; /* Preto Oficial [cite: 28] */
+            --red: #975D63;   /* Vermelho Escuro [cite: 29] */
+            --tan: #C7A988;   /* Bege Areia  */
+            --brown: #47352D; /* Marrom Escuro [cite: 24] */
+            --leather: #907159; /* Marrom Couro [cite: 26] */
+            --silver: #A9AAAD; /* Prata Envelhecido [cite: 31] */
+            --glass: rgba(255, 255, 255, 0.03);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--black); color: var(--tan); line-height: 1.6; }
-        h1, h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-        header { padding: 20px 5%; background: rgba(15, 7, 5, 0.95); border-bottom: 1px solid rgba(199, 169, 136, 0.1); display: flex; justify-content: space-between; align-items: center; }
-        .back-link { color: var(--silver); text-decoration: none; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-        .info-card { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 8px; border-left: 4px solid var(--red); }
-        .info-card h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
-        .info-card p { color: var(--silver); margin-bottom: 15px; }
-        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: var(--silver); opacity: 0.5; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--black);
+            color: var(--tan);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* HEADER OTIMIZADO */
+        header {
+            padding: 15px 5%;
+            background: rgba(15, 7, 5, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(199, 169, 136, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .back-link { color: var(--silver); text-decoration: none; font-weight: bold; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .back-link:hover { color: var(--red); }
+
+        /* RELEASE SECTION */
+        section { padding: 40px 5%; max-width: 1200px; margin: auto; }
+        .release-box { margin-bottom: 60px; }
+        .release-box h1 { font-size: clamp(1.8rem, 8vw, 3.2rem); color: #fff; margin-bottom: 20px; border-left: 5px solid var(--red); padding-left: 20px; }
+        .release-box p { color: var(--silver); font-size: 1.1rem; max-width: 850px; margin-bottom: 15px; }
+
+        /* GALERIA COM LEGENDAS [Modificação Solicitada] */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-item {
+            background: var(--glass);
+            border: 1px solid rgba(199, 169, 136, 0.1);
+            border-radius: 4px;
+            padding: 10px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--red); }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 2px;
+            opacity: 0.9;
+            display: block;
+        }
+
+        .gallery-item figcaption {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--tan);
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(151, 93, 99, 0.2);
+            padding-top: 8px;
+        }
+
+        /* ORGANOGRAMA MOBILE FRIENDLY */
+        .section-header { margin-bottom: 40px; border-left: 4px solid var(--red); padding-left: 15px; }
+        .organogram { text-align: center; padding: 40px 20px; background: var(--glass); border-radius: 8px; border: 1px solid rgba(199, 169, 136, 0.05); }
+        .org-container { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        
+        .org-node {
+            background: var(--brown);
+            border: 1px solid var(--red);
+            padding: 20px;
+            min-width: 240px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .org-node::after { content: ""; position: absolute; bottom: -30px; left: 50%; width: 2px; height: 30px; background: var(--red); }
+        .org-node.last::after { display: none; }
+        .org-node h4 { color: #fff; font-size: 0.95rem; margin-bottom: 5px; }
+        .org-node span { font-size: 0.8rem; color: var(--silver); opacity: 0.8; }
+
+        .org-sub-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(199, 169, 136, 0.1); font-size: 0.75rem; color: var(--silver); opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .org-sub-row { flex-direction: column; width: 100%; align-items: center; }
+            .org-node { width: 100%; max-width: 300px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
-        <div style="color: var(--red); font-family: 'Oswald';">NATIVUS PE</div>
-    </header>
-    <div class="container">
-        <div class="info-card">
-            <h1>Pernambuco</h1>
-            <p><strong>Chapter Fundador:</strong> Localizado em Olinda/PE, é a referência administrativa e histórica do Nativus On Road[cite: 6, 43].</p>
-            <p>Pautado pelos princípios de Irmandade, Respeito, Estrada e Disciplina, este chapter coordena as atividades nacionais[cite: 13].</p>
+
+<header>
+    <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> VOLTAR PARA HOME</a>
+    <div style="color: var(--red); font-family: 'Oswald'; font-size: 1.2rem;">NATIVUS <span style="color: var(--silver)">PE</span></div>
+</header>
+
+<section>
+    <div class="release-box">
+        <h1>Regional Pernambuco (Capítulo fundador)</h1>
+        <p>
+            Com sede no berço histórico de <strong>Olinda/PE</strong>, Pernambuco é o Chapter Fundador do Nativus On Road. 
+            Nossa regional é o coração administrativo nacional, responsável por preservar os pilares de Irmandade, Respeito, Estrada e Disciplina.
+            Atuamos como o marco zero da nossa história, coordenando a integração nacional e zelando pela lealdade e apoio mútuo entre todos os irmãos que cruzam nossas estradas.
+        </p>
+        <p>
+            Prezamos pelo bom relacionamento e interação com todos os grupos e clubes. Acreditamos que a integração é maior que a segregação.
+        </p>
+        <p style="margin-top: 25px; border: 1px solid var(--red); padding: 15px; display: inline-block;">
+            Deseja nos conhecer? Preencha o link abaixo e entraremos em contato!
+        </p>
+    </div>
+
+    <div class="gallery">
+        <figure class="gallery-item">
+            <img src="../imagens/presidente.png" alt="Presidente Nativus On Road">
+            <figcaption>Liderança Nacional - Presidência
+                <br>
+                D. Gusmão
+            </figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+            <img src="../imagens/vicepresidente.png" alt="Vice-presidente Nativus On Road">
+            <figcaption>Liderança Nacional - Vice-Presidência
+                <br>
+                John Félix
+            </figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+            <img src="https://via.placeholder.com/400x300/1a110f/c7a988?text=Foto+3+-+Estrada" alt="Asfalto PE">
+            <figcaption>Estrada e Disciplina em Olinda/PE</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+            <img src="https://via.placeholder.com/400x300/1a110f/c7a988?text=Foto+4+-+Identidade" alt="Identidade Nativus">
+            <figcaption>Zelo pela Imagem e Cores Oficiais</figcaption>
+        </figure>
+    </div>
+
+    <div class="section-header">
+        <h2>Estrutura Administrativa Atual (2026)</h2>
+        <p style="color: var(--silver)">Cargos existem para servir ao grupo. O respeito é à função e à hierarquia.</p>
+    </div>
+
+    <div class="organogram">
+        <div class="org-container">
+            <div class="org-node">
+                <h4>LIDERANÇA NATIVUS ON ROAD</h4>
+                <span>Presidência e Vice-Presidência</span>
+            </div>
+            
+            <div class="org-sub-row">
+                <div class="org-node">
+                    <h4>ROAD CAPTAIN ESTADUAL</h4>
+                    <span>Segurança e logística nos passeios</span>
+                </div>
+                <div class="org-node">
+                    <h4>DIREÇÃO DE DISCIPLINA</h4>
+                    <span>Exercida atualmente pela Regional Bahia</span>
+                </div>
+                <div class="org-node last">
+                    <h4>SECRETÁRIO REGIONAL</h4>
+                    <span>Registros e documentos</span>
+                </div>
+            </div>
         </div>
     </div>
-    <footer>&copy; 2026 NATIVUS ON ROAD • Chapter Olinda/PE</footer>
+</section>
+
+<footer>
+    &copy; 2026 NATIVUS ON ROAD • CHAPTER OLINDA/PE • ADMINISTRAÇÃO NACIONAL
+</footer>
+
 </body>
 </html>
