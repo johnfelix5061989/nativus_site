@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Mesma base de estilo para manter a unidade visual */
         :root {
             --black: #0F0705; --red: #975D63; --tan: #C7A988; --silver: #A9AAAD;
             --brown: #47352D; --glass: rgba(255, 255, 255, 0.03);
@@ -35,6 +34,10 @@
         .org-node h4 { color: #fff; font-size: 0.95rem; margin-bottom: 5px; }
         .org-node span { font-size: 0.8rem; color: var(--silver); }
         footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(199, 169, 136, 0.1); font-size: 0.75rem; color: var(--silver); opacity: 0.6; }
+        
+        #music-control { position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.2); }
+        .music-playing { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(151, 93, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0); } }
     </style>
 </head>
 <body>
@@ -54,11 +57,8 @@
             <figcaption>Zelo pelas cores e brasão na Bahia.</figcaption>
         </figure>
         <figure class="gallery-item">
-            <img src="C:\Users\jdoug\OneDrive\Área de Trabalho\NATIVUS_TI\site\imagens\kiko.jpeg" alt="Estrada Bahia">
-            <figcaption>ROAD CAPTAIN (BA)
-                <br>
-                Kiko
-            </figcaption>
+            <img src="../imagens/kiko.jpeg" alt="Estrada Bahia">
+            <figcaption>ROAD CAPTAIN (BA)<br>Kiko</figcaption>
         </figure>
         <figure class="gallery-item">
             <img src="../imagens/bahia_3.jpg" alt="Reunião Disciplina">
@@ -89,5 +89,52 @@
     </div>
 </section>
 <footer>&copy; 2026 NATIVUS ON ROAD • REGIONAL BAHIA</footer>
+
+<audio id="bg-music" loop>
+    <source src="../musica.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-control" onclick="toggleMusic()">
+    <i id="music-icon" class="fa-solid fa-volume-xmark"></i>
+</div>
+
+<script>
+    const audio = document.getElementById('bg-music');
+    const icon = document.getElementById('music-icon');
+    const btn = document.getElementById('music-control');
+    audio.volume = 0.7; 
+
+    const isPlaying = localStorage.getItem('nativus_music_playing') === 'true';
+    const savedTime = localStorage.getItem('nativus_music_time');
+    if (savedTime) { audio.currentTime = parseFloat(savedTime); }
+
+    if (isPlaying) {
+        audio.play().then(() => { updateUI(true); }).catch(() => { console.log("Interação necessária."); });
+    }
+
+    audio.ontimeupdate = () => { localStorage.setItem('nativus_music_time', audio.currentTime); };
+
+    function updateUI(playing) {
+        if (playing) {
+            icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+            btn.classList.add('music-playing');
+        } else {
+            icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+            btn.classList.remove('music-playing');
+        }
+    }
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            localStorage.setItem('nativus_music_playing', 'true');
+            updateUI(true);
+        } else {
+            audio.pause();
+            localStorage.setItem('nativus_music_playing', 'false');
+            updateUI(false);
+        }
+    }
+</script>
 </body>
 </html>

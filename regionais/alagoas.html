@@ -34,6 +34,10 @@
         .org-node h4 { color: #fff; font-size: 0.95rem; margin-bottom: 5px; }
         .org-node span { font-size: 0.8rem; color: var(--silver); }
         footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(199, 169, 136, 0.1); font-size: 0.75rem; color: var(--silver); opacity: 0.6; }
+        
+        #music-control { position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.2); }
+        .music-playing { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(151, 93, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(151, 93, 99, 0); } }
     </style>
 </head>
 <body>
@@ -44,17 +48,13 @@
 <section>
     <div class="release-box">
         <h1>Regional Alagoas</h1>
-        <p>A Regional Alagoas consolidou-se como um ponto estratégico de expansão do Nativus On Road. Pautada pelo respeito à hierarquia nacional, nossa regional destaca-se pela forte integração em eventos motociclísticos e pela lealdade absoluta aos princípios do grupo.</p>
+        <p>A Regional Alagoas consolidou-se como um ponto estratégico de expansão do Nativus On Road. Pautada pelo respeito à hierarquia nacional, nossa regional destaca-se pela forte integração em eventos motociclísticos e pela lealdade absoluta aos princípios de irmandade, respeito, estrada e disciplina.</p>
         <p>Nosso objetivo é fortalecer o vínculo entre os membros locais, garantindo que a identidade visual e os costumes da estrada sejam preservados com disciplina.</p>
     </div>
     <div class="gallery">
         <figure class="gallery-item">
-            <img src="C:\Users\jdoug\OneDrive\Área de Trabalho\NATIVUS_TI\site\imagens\dias.png
-            " alt="Diretor">
-            <figcaption>Diretor Regional AL
-                <br>
-                P. Dias
-            </figcaption>
+            <img src="../imagens/dias.png" alt="Diretor">
+            <figcaption>Diretor Regional AL<br>P. Dias</figcaption>
         </figure>
         <figure class="gallery-item">
             <img src="../imagens/alagoas_2.jpg" alt="Irmandade AL">
@@ -67,7 +67,7 @@
     </div>
     <div style="margin-bottom: 40px; border-left: 4px solid var(--red); padding-left: 15px;">
         <h2>Estrutura Regional Alagoas</h2>
-        <p style="color: var(--silver)">Hierarquia Estadual Conforme Estatuto</p>
+        <p style="color: var(--silver)">Hierarquia Estadual Conforme Estatuto </p>
     </div>
     <div class="organogram">
         <div class="org-container">
@@ -78,7 +78,7 @@
             <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
                 <div class="org-node">
                     <h4>ROAD CAPTAIN (AL)</h4>
-                    <span>Segurança e Logística de Comboio</span>
+                    <span>Segurança e Logística de Comboio </span>
                 </div>
                 <div class="org-node last">
                     <h4>SECRETÁRIO REGIONAL (AL)</h4>
@@ -89,5 +89,52 @@
     </div>
 </section>
 <footer>&copy; 2026 NATIVUS ON ROAD • REGIONAL ALAGOAS</footer>
+
+<audio id="bg-music" loop>
+    <source src="../musica.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-control" onclick="toggleMusic()">
+    <i id="music-icon" class="fa-solid fa-volume-xmark"></i>
+</div>
+
+<script>
+    const audio = document.getElementById('bg-music');
+    const icon = document.getElementById('music-icon');
+    const btn = document.getElementById('music-control');
+    audio.volume = 0.7; 
+
+    const isPlaying = localStorage.getItem('nativus_music_playing') === 'true';
+    const savedTime = localStorage.getItem('nativus_music_time');
+    if (savedTime) { audio.currentTime = parseFloat(savedTime); }
+
+    if (isPlaying) {
+        audio.play().then(() => { updateUI(true); }).catch(() => { console.log("Interação necessária."); });
+    }
+
+    audio.ontimeupdate = () => { localStorage.setItem('nativus_music_time', audio.currentTime); };
+
+    function updateUI(playing) {
+        if (playing) {
+            icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+            btn.classList.add('music-playing');
+        } else {
+            icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+            btn.classList.remove('music-playing');
+        }
+    }
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            localStorage.setItem('nativus_music_playing', 'true');
+            updateUI(true);
+        } else {
+            audio.pause();
+            localStorage.setItem('nativus_music_playing', 'false');
+            updateUI(false);
+        }
+    }
+</script>
 </body>
 </html>

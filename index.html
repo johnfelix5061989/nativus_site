@@ -255,6 +255,20 @@
     </div>
 </section>
 
+<section id="cadastro" style="background: linear-gradient(to bottom, transparent, rgba(151,93,99,0.05)); text-align: center;">
+    <div class="section-header" style="border-left: none; padding-left: 0;">
+        <h2>Deseja nos conhecer?</h2>
+        <p style="color: var(--silver)">Inicie sua jornada nesta irmandade</p>
+    </div>
+    <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; color: var(--silver);">
+        O ingresso no Nativus On Road <strong> exige lealdade, respeito à hierarquia e compromisso com os princípios do motogrupo.</strong>
+        <br>
+        <br>
+        Se você compartilha dos nossos valores, preencha sua candidatura para avaliação.
+    </p>
+    <a href="cadastro.html" class="button" style="padding: 18px 40px; font-size: 1rem;">Quero me Candidatar <i class="fa-solid fa-motorcycle"></i></a>
+</section>
+
 <footer>
     <div class="social-links" style="margin-bottom: 20px; font-size: 1.2rem;">
         <a href="#" style="color: var(--silver); margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
@@ -277,24 +291,59 @@
 
 <script>
     const audio = document.getElementById('bg-music');
-    audio.volume = 0.7; // Volume a 70%
+    const icon = document.getElementById('music-icon');
+    const btn = document.getElementById('music-control');
+    
+    // Configurações Iniciais
+    audio.volume = 0.7; 
 
-    if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
-    window.scrollTo(0, 0);
+    // Recupera o estado salvo no navegador
+    const isPlaying = localStorage.getItem('nativus_music_playing') === 'true';
+    const savedTime = localStorage.getItem('nativus_music_time');
 
-    function toggleMusic() {
-        const icon = document.getElementById('music-icon');
-        const btn = document.getElementById('music-control');
-        if (audio.paused) {
-            audio.play().catch(e => console.log("Interação necessária para tocar áudio."));
+    if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+    }
+
+    // Se estava tocando, tenta retomar (respeitando bloqueio do navegador)
+    if (isPlaying) {
+        audio.play().then(() => {
+            updateUI(true);
+        }).catch(() => {
+            console.log("Aguardando interação do usuário para retomar áudio.");
+        });
+    }
+
+    // Salva o tempo atual da música a cada segundo
+    audio.ontimeupdate = () => {
+        localStorage.setItem('nativus_music_time', audio.currentTime);
+    };
+
+    function updateUI(playing) {
+        if (playing) {
             icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
             btn.classList.add('music-playing');
         } else {
-            audio.pause();
             icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
             btn.classList.remove('music-playing');
         }
     }
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            localStorage.setItem('nativus_music_playing', 'true');
+            updateUI(true);
+        } else {
+            audio.pause();
+            localStorage.setItem('nativus_music_playing', 'false');
+            updateUI(false);
+        }
+    }
+
+    // Reset de scroll
+    if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
 </script>
 
 </body>
